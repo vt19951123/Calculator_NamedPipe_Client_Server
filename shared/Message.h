@@ -11,7 +11,7 @@ namespace IPC {
 enum class MessageType {
     EXPRESSION,  // Biểu thức tính toán
     RESULT,      // Kết quả tính toán
-    ERROR        // Thông báo lỗi
+    ERROR_MSG    // Thông báo lỗi (đổi từ ERROR -> ERROR_MSG)
 };
 
 // Định nghĩa các mã lỗi
@@ -28,14 +28,14 @@ struct Message {
     MessageType type;
     std::string data;
     ErrorCode errorCode = ErrorCode::NONE;
-    
+
     // Constructor
     Message() : type(MessageType::EXPRESSION), data(""), errorCode(ErrorCode::NONE) {}
-    
-    Message(MessageType t, const std::string& d) 
+
+    Message(MessageType t, const std::string& d)
         : type(t), data(d), errorCode(ErrorCode::NONE) {}
-        
-    Message(MessageType t, const std::string& d, ErrorCode e) 
+
+    Message(MessageType t, const std::string& d, ErrorCode e)
         : type(t), data(d), errorCode(e) {}
 };
 

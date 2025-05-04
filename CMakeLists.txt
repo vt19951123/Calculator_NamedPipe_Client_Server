@@ -49,5 +49,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Thêm các thư mục con vào dự án
 add_subdirectory(shared)
-# add_subdirectory(server)
+add_subdirectory(server)
 # add_subdirectory(client)
