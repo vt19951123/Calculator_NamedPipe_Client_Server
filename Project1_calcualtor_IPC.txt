@@ -1,0 +1,41 @@
+Dự án 1: Client-Server thông qua Named Pipes
+* Tạo ứng dụng calculator đơn giản gồm 2 phần: UI client và server xử lý tính toán
+* Client gửi biểu thức qua Named Pipe, server xử lý và trả kết quả
+
+## Sơ đồ tổng quan cho dự án Named Pipes Calculator
+
+```
++----------------+                +------------------+
+|                |   Named Pipe   |                  |
+|  Client (UI)   | ------------->|  Server (Logic)  |
+|  (Qt Quick)    |<--------------|  (C++)           |
++----------------+                +------------------+
+```
+
+## Các bước thực hiện
+
+1. **Thiết lập cấu trúc dự án**
+   - Tạo thư mục gốc cho dự án
+   - Thiết lập các thư mục con: client, server, shared
+
+2. **Xây dựng thư mục shared**
+   - Tạo struct/class Message để định nghĩa giao thức truyền tin
+   - Định nghĩa constants (tên pipe, kích thước buffer)
+
+3. **Phát triển Server**
+   - Tạo class NamedPipeServer
+   - Thiết lập phương thức khởi tạo và hủy pipe
+   - Triển khai phương thức đọc và xử lý biểu thức toán học
+
+4. **Phát triển Client**
+   - Tạo class NamedPipeClient để giao tiếp với server
+   - Tạo giao diện Qt Quick đơn giản
+   - Kết nối UI với lớp NamedPipeClient
+
+5. **Thiết lập CMake**
+   - Tạo CMakeLists.txt ở thư mục gốc
+   - Tạo CMakeLists.txt cho client và server
+
+6. **Kiểm thử**
+   - Biên dịch và chạy cả server và client
+   - Kiểm thử tính năng calculator
